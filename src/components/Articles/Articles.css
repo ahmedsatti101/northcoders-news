@@ -1,3 +1,9 @@
-.article-list {
-    display: flex;
-}
+.card {
+    height: 200px;
+    flex-direction: row;
+    margin: 30px;
+  }
+  
+  .card-img-top {
+    width: 12%;
+  }
