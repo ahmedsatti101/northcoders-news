@@ -35,3 +35,16 @@ export const viewSingleArticle = (id) => {
       });
   }
 };
+
+export const getComments = (id) => {
+  return axios
+    .get(
+      `https://portfolio-web-service-n7kk.onrender.com/api/articles/${id}/comments`
+    )
+    .then((response) => {
+      return response.data.comments;
+    })
+    .catch((err) => {
+      return err;
+    });
+};

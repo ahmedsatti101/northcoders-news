@@ -1,7 +1,7 @@
 import Home from "./components/Home";
 import { Route, Routes } from "react-router-dom";
 import SidebarNav from "./components/Sidebar/Sidebar";
-import SingleArticle from "./components/SingleArticle";
+import SingleArticle from "./components/SingleArticle/SingleArticle";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/:article_id" element={<SingleArticle />} />
       </Routes>
-      <SidebarNav />
+      {/* <SidebarNav /> */}
     </>
   );
 }
