@@ -1,0 +1,33 @@
+main {
+  max-width: fit-content;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h3 {
+  font-style: italic;
+  text-decoration: underline;
+}
+
+.comments {
+  border: 1px solid gray;
+  padding: 10px;
+  margin-bottom: 0px;
+}
+
+.comment-author {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.comment-body {
+  margin-bottom: 10px;
+}
+
+details {
+  display: flex;
+  justify-content: space-between;
+  font-size: 20px;
+  color: #555;
+  margin-bottom: 10px
+}

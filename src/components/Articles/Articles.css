@@ -1,3 +1,38 @@
-.article-list {
+@media only screen and (max-width: 600px) {
+  .article-images {
+    width: fit-content;
+  }
+
+  .card {
     display: flex;
+    height: 200px;
+    flex-direction: row;
+    margin: 30px;
+    width: fit-content;
+  }
+
+  .card-group {
+    flex-flow: row;
+    display: block;
+    width: fit-content;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .card {
+    display: flex;
+    height: 200px;
+    flex-direction: row;
+    margin: 30px;
+    width: fit-content;
+  }
+
+  .card-group {
+    flex-flow: row;
+    display: block;
+  }
+
+  .article-images {
+    width: fit-content;
+  }
 }
