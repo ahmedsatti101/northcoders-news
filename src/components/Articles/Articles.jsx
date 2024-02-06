@@ -43,7 +43,7 @@ export default function ViewArticles() {
                 className="article-images"
               />
               <Card.Footer>
-                <Link to={`/${article.article_id}`}>{article.title}</Link>
+                <Link to={`articles/${article.article_id}`}>{article.title}</Link>
                 <Card.Text>Topic: {article.topic}</Card.Text>
                 <Card.Text>Comments: {article.comment_count}</Card.Text>
               </Card.Footer>
