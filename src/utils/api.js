@@ -39,3 +39,18 @@ export const getComments = (id) => {
       return err;
     });
 };
+
+export const voteOnArticle = (id, votes) => {
+  return axios
+    .patch(
+      `https://portfolio-web-service-n7kk.onrender.com/api/articles/${id}`,
+      { inc_votes: votes }
+    )
+    .then((response) => {
+      console.log(response.data.votes);
+      return response.data.votes;
+    })
+    .catch((err) => {
+      return err;
+    });
+};
