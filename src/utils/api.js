@@ -11,7 +11,7 @@ export const getArticles = () => {
     });
 };
 
-export const viewSingleArticle = (id) => {
+export const getSingleArticle = (id) => {
   let str = `https://portfolio-web-service-n7kk.onrender.com/api/articles`;
 
   if (id) {
@@ -20,15 +20,6 @@ export const viewSingleArticle = (id) => {
       .get(str)
       .then((response) => {
         return response.data.article[0];
-      })
-      .catch((err) => {
-        return err;
-      });
-  } else {
-    return axios
-      .get(str)
-      .then((response) => {
-        return response.data.articles;
       })
       .catch((err) => {
         return err;
