@@ -41,16 +41,19 @@ export const getComments = (id) => {
 };
 
 export const voteOnArticle = (id, votes) => {
+  // console.log(id);
+  // console.log(votes);
   return axios
     .patch(
       `https://portfolio-web-service-n7kk.onrender.com/api/articles/${id}`,
       { inc_votes: votes }
     )
     .then((response) => {
-      console.log(response.data.votes);
+      // console.log(response.data.votes);
       return response.data.votes;
     })
     .catch((err) => {
-      return err;
+      console.log(err.response.data);
+      return err.response.data;
     });
 };

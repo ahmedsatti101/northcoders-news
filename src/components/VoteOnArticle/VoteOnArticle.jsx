@@ -1,37 +1,43 @@
 import { voteOnArticle } from "../../utils/api";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import "./VoteOnArticle.css";
 import Heart from "react-animated-heart";
 
 export default function ArticleVote({ votes, articleId }) {
-  const [vote, setVote] = useState(votes || 0);
+  const [vote, setVote] = useState(votes);
   const [isClick, setClick] = useState(false);
 
-  useEffect(() => {
-    if (vote !== null) {
-      voteOnArticle(articleId, vote)
-        .then((response) => {
-          setVote(response);
-        })
-        .catch((err) => {
-          return err;
-        });
+  const handleVote = async (voteNum) => {
+    try {
+      await voteOnArticle(articleId, voteNum);
+      setVote((prevVote) => prevVote + voteNum);
+    } catch (err) {
+      return err;
     }
-  }, [articleId, vote]);
+  };
 
   const decrementVote = () => {
-    setVote((prevVote) => prevVote - 1);
+    handleVote(-1);
   };
 
   const incrementVote = () => {
-    setVote((prevVote) => prevVote + 1);
+    handleVote(1);
+  };
+
+  const toggleVote = () => {
+    if (isClick) {
+      decrementVote();
+    } else {
+      incrementVote();
+    }
+    setClick(!isClick);
   };
 
   return (
     <>
-      <button onClick={incrementVote}>+</button>
-      <button onClick={decrementVote}>-</button>
-      <Heart isClick={isClick} onClick={() => setClick(!isClick)} />
+      <br />
+      <p>Votes: {vote}</p>
+      <div id="like-button"><Heart isClick={isClick} onClick={toggleVote} /></div>
     </>
   );
 }
