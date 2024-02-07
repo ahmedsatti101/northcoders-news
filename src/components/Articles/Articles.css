@@ -1,20 +1,20 @@
 @media only screen and (max-width: 600px) {
   .article-images {
-    width: fit-content;
+    width: 150px;
   }
 
   .card {
     display: flex;
     height: 200px;
     flex-direction: row;
-    margin: 30px;
-    width: fit-content;
+    width: 100%;
+    overflow: hidden auto;
   }
 
   .card-group {
     flex-flow: row;
     display: block;
-    width: fit-content;
+    width: 100%;
   }
 }
 
@@ -24,7 +24,7 @@
     height: 200px;
     flex-direction: row;
     margin: 30px;
-    width: fit-content;
+    width: 100%;
   }
 
   .card-group {

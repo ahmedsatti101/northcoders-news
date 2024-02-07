@@ -2,7 +2,9 @@ import { useParams } from "react-router-dom";
 import { getSingleArticle } from "../../utils/api";
 import { useState, useEffect } from "react";
 import "./SingleArticle.css";
-import  CommentsList  from "../CommentsList";
+import CommentsList from "../CommentsList";
+import ArticleVote from "../VoteOnArticle/VoteOnArticle";
+import '../VoteOnArticle/VoteOnArticle.css'
 
 export default function SingleArticle() {
   const { article_id } = useParams();
@@ -39,6 +41,7 @@ export default function SingleArticle() {
       <main>
         <h2>{article.title}</h2>
         <article>{article.body}</article>
+        <ArticleVote votes={article.votes} articleId={article.article_id}/>
       </main>
       <details>
         <p>Votes: {article.votes}</p>
