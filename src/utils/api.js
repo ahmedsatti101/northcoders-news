@@ -7,7 +7,7 @@ export const getArticles = () => {
       return response.data.articles;
     })
     .catch((err) => {
-      return err;
+      return err.response.data;
     });
 };
 
@@ -22,7 +22,7 @@ export const getSingleArticle = (id) => {
         return response.data.article[0];
       })
       .catch((err) => {
-        return err;
+        return err.response.data;
       });
   }
 };
@@ -36,24 +36,59 @@ export const getComments = (id) => {
       return response.data.comments;
     })
     .catch((err) => {
-      return err;
+      return err.response.data;
     });
 };
 
 export const voteOnArticle = (id, votes) => {
-  // console.log(id);
-  // console.log(votes);
   return axios
     .patch(
       `https://portfolio-web-service-n7kk.onrender.com/api/articles/${id}`,
       { inc_votes: votes }
     )
     .then((response) => {
-      // console.log(response.data.votes);
       return response.data.votes;
     })
     .catch((err) => {
-      console.log(err.response.data);
+      return err.response.data;
+    });
+};
+
+export const getUsername = (username) => {
+  return axios
+    .get(
+      `https://portfolio-web-service-n7kk.onrender.com/api/users/${username}`
+    )
+    .then((response) => {
+      return response.data.user[0];
+    })
+    .catch((err) => {
+      return err.response.data;
+    });
+};
+
+export const getUsers = () => {
+  return axios
+    .get("https://portfolio-web-service-n7kk.onrender.com/api/users")
+    .then((response) => {
+      return response.data.users;
+    })
+    .catch((err) => {
+      return err.response.data;
+    });
+};
+
+export const postComment = (id, username, body) => {
+  return axios
+    .post(
+      `https://portfolio-web-service-n7kk.onrender.com/api/articles/${id}/comments`,
+      { username: username.username, body: body }
+    )
+    .then((response) => {
+      return response.data.comment[0];
+    })
+    .catch((err) => {
+      console.log(err);
       return err.response.data;
     });
 };

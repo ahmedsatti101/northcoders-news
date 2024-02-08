@@ -1,11 +1,14 @@
 import { useParams } from "react-router-dom";
-import { getComments } from "../utils/api";
-import { useState, useEffect } from "react";
-import "../components/SingleArticle/SingleArticle.css";
+import { getComments, postComment } from "../../utils/api";
+import { useState, useEffect, useContext } from "react";
+import "../../components/SingleArticle/SingleArticle.css";
+import { UserContext } from "../../contexts/UserContext";
+import UserComment from "./PostComment";
 
 export default function CommentsList() {
   const { article_id } = useParams();
   const [comments, setComments] = useState([]);
+  const { loggedInUser } = useContext(UserContext);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -20,7 +23,16 @@ export default function CommentsList() {
       .finally(() => {
         setLoading(false);
       });
-  }, [article_id]);
+  }, []);
+
+  const handleAddComment = async (comment) => {
+    try {
+      const newComment = await postComment(article_id, loggedInUser, comment);
+      setComments((prevComments) => [newComment, ...prevComments]);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   if (loading) {
     return <p>Loading...</p>;
@@ -33,6 +45,7 @@ export default function CommentsList() {
   return (
     <>
       <p>Comments:</p>
+      <UserComment articleId={article_id} handleAddComment={handleAddComment} />
       <section className="comments">
         {comments.map((comment) => {
           const date = new Date(comment.created_at).toString();
