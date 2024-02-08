@@ -44,23 +44,22 @@ export default function CommentsList() {
 
   return (
     <>
-      <p>Comments:</p>
       <UserComment articleId={article_id} handleAddComment={handleAddComment} />
-      <section className="comments">
+      <br />
+      <p>Comments:</p>
         {comments.map((comment) => {
           const date = new Date(comment.created_at).toString();
           return (
-            <>
+            <section className="comments" key={comment.comment_id}>
               <p className="comment-author">{comment.author}</p>
               <p className="comment-body">{comment.body}</p>
               <details>
                 <p>Votes: {comment.votes}</p>
                 <p>Posted: {date}</p>
               </details>
-            </>
+      </section>
           );
         })}
-      </section>
     </>
   );
 }

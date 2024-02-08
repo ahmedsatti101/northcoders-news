@@ -12,10 +12,17 @@ export default function UserComment({ articleId, handleAddComment }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const newComment = {
+      username: loggedInUser,
+      body: comment
+    };
+
+    handleAddComment(newComment.body)
+    setComment("");
+
     try {
-      const request = await postComment(articleId, loggedInUser, comment);
-      handleAddComment(request.body);
-      setComment("");
+      await postComment(articleId, loggedInUser, comment);
     } catch (err) {
       return err;
     }
