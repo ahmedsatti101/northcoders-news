@@ -1,10 +1,9 @@
 import Home from "./components/Home";
 import Header from "./components/Header";
 import { Route, Routes } from "react-router-dom";
-import SidebarNav from "./components/Sidebar/Sidebar";
 import SingleArticle from "./components/SingleArticle/SingleArticle";
-import LoggedInUser from "./components/User/LoggedInUser";
-import CreateUser from "./components/User/CreateUser";
+import { UserComponent } from "./contexts/User";
+import ViewUsers from "./components/Users";
 
 function App() {
   return (
@@ -13,10 +12,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/articles/:article_id" element={<SingleArticle />} />
-        <Route path="/create-profile" element={<CreateUser />} />
-        <Route path="/users/:username" element={<LoggedInUser />} />
+        <Route path="/users" element={<ViewUsers />}/>
+        <Route path="/users/:username" element={<UserComponent />} />
       </Routes>
-      {/* <SidebarNav /> */}
     </>
   );
 }

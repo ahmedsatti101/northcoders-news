@@ -56,11 +56,24 @@ export const voteOnArticle = (id, votes) => {
 
 export const getUsername = (username) => {
   return axios
-  .get(`/api/users/${username}`)
-  .then((response) => {
-    return response.data.user
-  })
-  .catch((err) => {
-    return err.response.data
-  })
+    .get(
+      `https://portfolio-web-service-n7kk.onrender.com/api/users/${username}`
+    )
+    .then((response) => {
+      return response.data.user[0];
+    })
+    .catch((err) => {
+      return err.response.data;
+    });
+};
+
+export const getUsers = () => {
+  return axios
+    .get("https://portfolio-web-service-n7kk.onrender.com/api/users")
+    .then((response) => {
+      return response.data.users;
+    })
+    .catch((err) => {
+      return err.response.data;
+    });
 };
