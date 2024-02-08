@@ -79,6 +79,11 @@ export const getUsers = () => {
 };
 
 export const postComment = (id, username, body) => {
+  if (username.username === "" && body === "") {
+    alert("You need to be logged in or provide a comment to post!");
+    return;
+  }
+
   return axios
     .post(
       `https://portfolio-web-service-n7kk.onrender.com/api/articles/${id}/comments`,
@@ -88,7 +93,6 @@ export const postComment = (id, username, body) => {
       return response.data.comment[0];
     })
     .catch((err) => {
-      console.log(err);
       return err.response.data;
     });
 };
