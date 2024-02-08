@@ -12,8 +12,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/articles/:article_id" element={<SingleArticle />} />
-        <Route path="/users" element={<ViewUsers />}/>
+        <Route path="/users" element={<ViewUsers />} />
         <Route path="/users/:username" element={<UserComponent />} />
+        {/* /topics/:topic_name */}
       </Routes>
     </>
   );

@@ -77,3 +77,18 @@ export const getUsers = () => {
       return err.response.data;
     });
 };
+
+export const postComment = (id, username, body) => {
+  return axios
+    .post(
+      `https://portfolio-web-service-n7kk.onrender.com/api/articles/${id}/comments`,
+      { username: username.username, body: body }
+    )
+    .then((response) => {
+      return response.data.comment[0];
+    })
+    .catch((err) => {
+      console.log(err);
+      return err.response.data;
+    });
+};
