@@ -1,8 +1,12 @@
 import axios from "axios";
 
-export const getArticles = () => {
+export const getArticles = (topic) => {
   return axios
-    .get("https://portfolio-web-service-n7kk.onrender.com/api/articles")
+    .get("https://portfolio-web-service-n7kk.onrender.com/api/articles", {
+      params: {
+        topic
+      },
+    })
     .then((response) => {
       return response.data.articles;
     })
@@ -106,6 +110,6 @@ export const deleteComment = (id) => {
       console.log(`Deleted comment ${id}`);
     })
     .catch((err) => {
-      console.log(err.response.data)
-    })
+      console.log(err.response.data);
+    });
 };

@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import SingleArticle from "./components/SingleArticle/SingleArticle";
 import { UserComponent } from "./contexts/User";
 import ViewUsers from "./components/Users";
+import DisplayArticleTopics from "./components/Articles/ArticlesWithTopic";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
         <Route path="/articles/:article_id" element={<SingleArticle />} />
         <Route path="/users" element={<ViewUsers />} />
         <Route path="/users/:username" element={<UserComponent />} />
-        {/* /topics/:topic_name */}
+        <Route path="/topics/:topic" element={<DisplayArticleTopics />}/>
       </Routes>
     </>
   );
