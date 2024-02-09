@@ -1,11 +1,17 @@
 import axios from "axios";
 
-export const getArticles = (topic) => {
+export const getArticles = (topic, date, comment_count, votes, order) => {
   return axios
     .get("https://portfolio-web-service-n7kk.onrender.com/api/articles", {
       params: {
-        topic
-      },
+        topic,
+        sort_by: {
+          created_at: date,
+          comment_count,
+          votes
+        },
+        order
+      }
     })
     .then((response) => {
       return response.data.articles;
