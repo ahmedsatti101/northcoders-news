@@ -1,15 +1,11 @@
 import axios from "axios";
 
-export const getArticles = (topic, date, comment_count, votes, order) => {
+export const getArticles = (topic, sortBy, order) => {
   return axios
     .get("https://portfolio-web-service-n7kk.onrender.com/api/articles", {
       params: {
         topic,
-        sort_by: {
-          created_at: date,
-          comment_count,
-          votes
-        },
+        sort_by: sortBy,
         order
       }
     })
