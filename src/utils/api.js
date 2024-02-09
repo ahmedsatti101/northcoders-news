@@ -96,3 +96,16 @@ export const postComment = (id, username, body) => {
       return err.response.data;
     });
 };
+
+export const deleteComment = (id) => {
+  return axios
+    .delete(
+      `https://portfolio-web-service-n7kk.onrender.com/api/comments/${id}`
+    )
+    .then(() => {
+      console.log(`Deleted comment ${id}`);
+    })
+    .catch((err) => {
+      console.log(err.response.data)
+    })
+};
