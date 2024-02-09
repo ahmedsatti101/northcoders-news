@@ -4,6 +4,7 @@ import { useState, useEffect, useContext } from "react";
 import "../../components/SingleArticle/SingleArticle.css";
 import { UserContext } from "../../contexts/UserContext";
 import UserComment from "./PostComment";
+import DeleteCommentById from "./DeleteComment";
 
 export default function CommentsList() {
   const { article_id } = useParams();
@@ -34,6 +35,12 @@ export default function CommentsList() {
     }
   };
 
+  const handleDeleteComment = (commentId) => {
+    setComments((prevComments) =>
+      prevComments.filter((comment) => comment.comment_id !== commentId)
+    );
+  };
+
   if (loading) {
     return <p>Loading...</p>;
   }
@@ -47,19 +54,25 @@ export default function CommentsList() {
       <UserComment articleId={article_id} handleAddComment={handleAddComment} />
       <br />
       <p>Comments:</p>
-        {comments.map((comment) => {
-          const date = new Date(comment.created_at).toString();
-          return (
-            <section className="comments" key={comment.comment_id}>
-              <p className="comment-author">{comment.author}</p>
-              <p className="comment-body">{comment.body}</p>
-              <details>
-                <p>Votes: {comment.votes}</p>
-                <p>Posted: {date}</p>
-              </details>
-      </section>
-          );
-        })}
+      {comments.map((comment) => {
+        const date = new Date(comment.created_at).toString();
+        return (
+          <section className="comments" key={comment.comment_id}>
+            <p className="comment-author">{comment.author}</p>
+            <p className="comment-body">{comment.body}</p>
+            {loggedInUser.username === comment.author && (
+              <DeleteCommentById
+                comment={comment}
+                onDelete={handleDeleteComment}
+              />
+            )}
+            <details>
+              <p>Votes: {comment.votes}</p>
+              <p>Posted: {date}</p>
+            </details>
+          </section>
+        );
+      })}
     </>
   );
 }
