@@ -1,19 +1,21 @@
-import { useState, useEffect } from "react";
 import { getArticles } from "../../utils/api";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
 import "./Articles.css";
 
-export default function ViewArticles() {
+export default function DisplayArticleTopics() {
+  const { topic } = useParams();
   const [articles, setArticles] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    getArticles()
-      .then((data) => {
-        setArticles(data);
+    getArticles(topic)
+      .then((response) => {
+        setArticles(response);
       })
       .catch((err) => {
         setError(err);
@@ -21,7 +23,7 @@ export default function ViewArticles() {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [topic]);
 
   if (loading) {
     return <p>Loading...</p>;
@@ -43,8 +45,9 @@ export default function ViewArticles() {
                 className="article-images"
               />
               <Card.Footer>
-                <Link to={`articles/${article.article_id}`}>{article.title}</Link>
-                <Card.Text>Topic: <Link to={`/topics/${article.topic}`}>{article.topic}</Link></Card.Text>
+                <Link to={`/articles/${article.article_id}`}>
+                  {article.title}
+                </Link>
                 <Card.Text>Comments: {article.comment_count}</Card.Text>
               </Card.Footer>
             </Card>

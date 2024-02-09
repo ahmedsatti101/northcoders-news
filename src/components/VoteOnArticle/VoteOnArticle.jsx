@@ -37,7 +37,11 @@ export default function ArticleVote({ votes, articleId }) {
     <>
       <br />
       <p>Votes: {vote}</p>
-      <div id="like-button"><Heart isClick={isClick} onClick={toggleVote} /></div>
+      <div id="like-button">
+        <button className={`${isClick ? 'liked': ''}`} onClick={toggleVote}>
+          Like
+        </button>
+      </div>
     </>
   );
 }
