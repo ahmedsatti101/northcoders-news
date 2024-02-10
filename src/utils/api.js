@@ -13,6 +13,7 @@ export const getArticles = (topic, sortBy, order) => {
       return response.data.articles;
     })
     .catch((err) => {
+      console.log(err)
       return err.response.data;
     });
 };
