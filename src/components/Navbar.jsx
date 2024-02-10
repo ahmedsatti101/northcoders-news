@@ -20,13 +20,6 @@ export default function NavBar() {
             <Nav.Link as={Link} to={`/users/${loggedInUser.username}`}>Signed in as: {loggedInUser.name || 'Not Signed in'} </Nav.Link>
             <Nav.Link as={Link} to='/users'>View users</Nav.Link>
           </Nav>
-          <Nav>
-            <Nav.Link href="#bookmarks">Bookmarks</Nav.Link>
-            <Nav.Link href="#post-article">
-              Post
-            </Nav.Link>
-            <Nav.Link href="#create-profile">Create profile</Nav.Link>
-          </Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>

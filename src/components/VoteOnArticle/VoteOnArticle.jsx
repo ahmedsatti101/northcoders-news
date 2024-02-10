@@ -1,7 +1,6 @@
 import { voteOnArticle } from "../../utils/api";
 import { useState } from "react";
 import "./VoteOnArticle.css";
-import Heart from "react-animated-heart";
 
 export default function ArticleVote({ votes, articleId }) {
   const [vote, setVote] = useState(votes);

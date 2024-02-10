@@ -4,14 +4,17 @@ import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import CardGroup from "react-bootstrap/CardGroup";
 import "./Articles.css";
+import SortArticles from ".././SortBy/SortBy";
 
 export default function ViewArticles() {
   const [articles, setArticles] = useState([]);
+  const [sortBy, setSortBy] = useState("created_at");
+  const [order, setOrder] = useState("desc");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    getArticles()
+    getArticles(null, sortBy, order)
       .then((data) => {
         setArticles(data);
       })
@@ -21,7 +24,7 @@ export default function ViewArticles() {
       .finally(() => {
         setLoading(false);
       });
-  }, []);
+  }, [order, sortBy]);
 
   if (loading) {
     return <p>Loading...</p>;
@@ -33,6 +36,7 @@ export default function ViewArticles() {
 
   return (
     <>
+      <SortArticles setSortBy={setSortBy} setOrder={setOrder} />
       <CardGroup>
         {articles.map((article) => {
           return (
@@ -43,8 +47,13 @@ export default function ViewArticles() {
                 className="article-images"
               />
               <Card.Footer>
-                <Link to={`articles/${article.article_id}`}>{article.title}</Link>
-                <Card.Text>Topic: <Link to={`/topics/${article.topic}`}>{article.topic}</Link></Card.Text>
+                <Link to={`articles/${article.article_id}`}>
+                  {article.title}
+                </Link>
+                <Card.Text>
+                  Topic:{" "}
+                  <Link to={`/topics/${article.topic}`}>{article.topic}</Link>
+                </Card.Text>
                 <Card.Text>Comments: {article.comment_count}</Card.Text>
               </Card.Footer>
             </Card>
