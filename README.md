@@ -1,8 +1,13 @@
-# React + Vite
+# Northcoders news
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## About
+Northcoders news is a frontend application built with the React.js framwwork. It fetchs data from an API I built for this specific app and displays that data to user. The app allows users to browse articles and different topics to look at specfic articles. Users can also sign in, post a comment on an article and upvote/downvote an article.
 
-Currently, two official plugins are available:
+## Is the app hosted anywhere?
+The app is hosted on Netlify and you can go [here](https://react-northcoders-news.netlify.app/) to see it.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## How can run this on my machine?
+Clone the repo by clicking on the Code button above and copying the link. Depending on your machine, open either the command line or powershell for Windows or the integrated terminal on macOS/linux and type `git clone <repo-url>` replace repo-url with the link you copied earlier and press `Enter`. Naviagte to the `northcoders-news` folder that was created when you cloned the repo and open it in a code editor or IDE of your choice. Open the integrated terminal within the editor and run `npm install` to intall all the dependencies and dev dependencies to run the app on your machine. All that is left now is to run `npm run dev` and click or copy and paste the link that appears in your terminal and now you have the project running locally on your machine.
+
+## Other
+Backend API repo: https://github.com/ahmedsatti101/my_portfolio
